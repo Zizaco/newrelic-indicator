@@ -1,8 +1,13 @@
 #!/usr/bin/env python
 
+import sys
 import os
 import glob
 import unittest
+from mock import Mock
+
+# Mocks GTK dependency
+sys.modules['gtk'] = Mock(name='gtk_module')
 
 from src.newrelic_indicator import *
 from src.newrelic_app import *
