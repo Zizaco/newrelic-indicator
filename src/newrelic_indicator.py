@@ -5,7 +5,7 @@ import appindicator
 
 class NewrelicIndicator:
 
-    ping_frequency = 10 # seconds
+    ping_frequency = 60 # seconds
 
     def __init__(self):
         self.setup()
@@ -31,9 +31,19 @@ class NewrelicIndicator:
         self.menu.append(item)
 
     def run(self):
-        # self.check_newrelic()
-        # gtk.timeout_add(ping_frequency * 1000, self.check_newrelic)
+        self.refresh()
+        gtk.timeout_add(self.ping_frequency * 1000, self.refresh)
         gtk.main()
+
+    def refresh(self):
+        if hasattr(self, 'newrelic_app'):
+            self.newrelic_app.update_state()
+            self.indicator.set_label(self.newrelic_app.get_info())
+
+        return True
+
+    def set_app(self, newrelic_app):
+        self.newrelic_app = newrelic_app
 
     def quit(self, widget):
         sys.exit(0)
