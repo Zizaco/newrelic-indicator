@@ -5,6 +5,7 @@ python:
 
 before_script:
   - sudo apt-get install python-appindicator
+  - pip install PyGTK
   - pip install mock
   - easy_install pyrg
 
