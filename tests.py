@@ -6,8 +6,9 @@ import glob
 import unittest
 from mock import Mock
 
-# Mocks GTK dependency
-sys.modules['gtk'] = Mock(name='gtk_module')
+# Mocks Module dependencies
+sys.modules['gtk']          = Mock(name='gtk_module')
+sys.modules['appindicator'] = Mock(name='appindicator_module')
 
 from src.newrelic_indicator import *
 from src.newrelic_app import *
