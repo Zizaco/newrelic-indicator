@@ -3,17 +3,28 @@ language: python
 python:
   - "2.7"
 
-before_script:
+install:
+# PyGobject
+  - wget http://ftp.gnome.org/pub/GNOME/sources/pygobject/2.28/pygobject-2.28.6.tar.bz2
+  - tar xf pygobject-2.28.6.tar.bz2
+  - cd pygobject-2.28.6
+  - ./configure --prefix=$VIRT_ROOT --disable-introspection > /dev/null
+  - make > /dev/null
+  - make install > /dev/null
+  - cd ..
+# PyGtk
   - wget http://ftp.gnome.org/pub/GNOME/sources/pygtk/2.24/pygtk-2.24.0.tar.bz2
   - tar xf pygtk-2.24.0.tar.bz2
   - cd pygtk-2.24.0
-  - export PKG_CONFIG_PATH=/home/travis/virtualenv/python$TRAVIS_PYTHON_VERSION/lib/pkgconfig
-  - ./configure --prefix=/home/travis/virtualenv/python$TRAVIS_PYTHON_VERSION/
-  - make
-  - make install
+  - ./configure --prefix=$VIRT_ROOT > /dev/null
+  - make > /dev/null
+  - make install > /dev/null
   - cd ..
+# Appindicator
   - sudo apt-get install python-appindicator
+# Mock
   - pip install mock
+# Pyrg
   - easy_install pyrg
 
 script: ./run_tests.sh
