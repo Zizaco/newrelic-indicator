@@ -29,6 +29,12 @@ Add `/home/<user>/.newrelic-indicator/newrelic-indicator.sh` to `/etc/rc.local`.
     /home/zizaco/.newrelic-indicator/newrelic-indicator.sh
 
     exit 0
+    
+## Troubleshooting
+
+You may need to install **Appindicator** in order to run the Indicator properly:
+    
+    sudo apt-get install python-appindicator
 
 ## License
 
