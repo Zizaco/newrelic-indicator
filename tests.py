@@ -5,6 +5,7 @@ import glob
 import unittest
 
 from src.newrelic_indicator import *
+from src.newrelic_app import *
 
 test_files = glob.glob("tests/"+os.path.dirname(__file__)+"/*.py")
 
