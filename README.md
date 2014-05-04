@@ -2,6 +2,8 @@
 
 _A indicator applet to monitor metrics from newrelic for [Ubuntu's Unity Desktop](https://unity.ubuntu.com/)_
 
+![NewRelic Indicator Screenshot](https://dl.dropboxusercontent.com/u/12506137/libs_bundles/newrelic_indicator.png)
+
 ## Quick start
 
 **1.** Download files
@@ -17,7 +19,7 @@ _A indicator applet to monitor metrics from newrelic for [Ubuntu's Unity Desktop
 
 ## License
 
-Newrelic Indicator Applet is free software distributed under the terms of the MIT license
+Newrelic Indicator Applet is free software distributed under the terms of the [MIT license](http://opensource.org/licenses/MIT)
 
 ## Aditional information
 
