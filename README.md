@@ -17,6 +17,19 @@ _A indicator applet to monitor metrics from newrelic for [Ubuntu's Unity Desktop
 
     ./newrelic-indicator.sh
 
+**4.** _(Optional)_ Add the indicator to run at startup. Edit `/etc/rc.local`
+
+    sudo gedit /etc/rc.local
+
+Add `/home/<user>/.newrelic-indicator/newrelic-indicator.sh` to `/etc/rc.local`. For example:
+
+    #!/bin/sh -e
+
+    # Run Newrelic Indicator Applet
+    /home/zizaco/.newrelic-indicator/newrelic-indicator.sh
+
+    exit 0
+
 ## License
 
 Newrelic Indicator Applet is free software distributed under the terms of the [MIT license](http://opensource.org/licenses/MIT)
