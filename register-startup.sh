@@ -1,7 +1,7 @@
 #!/bin/bash
 
 while true; do
-    read -p "Do you wish to add Newrelic Indicator to startup? [yn]" yn
+    read -p "Do you wish to add Newrelic Indicator to startup? [yn] " yn
     case $yn in
         [Yy]* )
             DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
