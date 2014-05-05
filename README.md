@@ -2,38 +2,35 @@
 
 _A indicator applet to monitor metrics from newrelic for [Ubuntu's Unity Desktop](https://unity.ubuntu.com/)_
 
+[![Build Status](https://travis-ci.org/Zizaco/newrelic-indicator.svg?branch=master)](https://travis-ci.org/Zizaco/newrelic-indicator)
+[![License MIT](http://img.shields.io/badge/license-MIT-blue.svg)](http://opensource.org/licenses/MIT)
+
 ![NewRelic Indicator Screenshot](https://dl.dropboxusercontent.com/u/12506137/libs_bundles/newrelic_indicator.png)
 
 ## Quick start
 
 **1.** Download files
 
-    git clone git@github.com:Zizaco/newrelic-indicator.git .newrelic-indicator
-    cd .newrelic-indicator
+    $ git clone git@github.com:Zizaco/newrelic-indicator.git .newrelic-indicator
+    $ cd .newrelic-indicator
 
 **2.** Add your **API Key** and your **App ID** to `config.json`
 
 **3.** Run the indicator
 
-    ./newrelic-indicator.sh
+    $ ./newrelic-indicator.sh
 
-**4.** _(Optional)_ Add the indicator to run at startup. Edit `/etc/rc.local`
+**4.** Add the indicator to run at startup.
 
-    sudo gedit /etc/rc.local
+    $ ./register-startup.sh
+    Do you wish to add Newrelic Indicator to startup? [yn] y
+    ...
+    Added Newrelic Indicator to system startup
 
-Add `/home/<user>/.newrelic-indicator/newrelic-indicator.sh` to `/etc/rc.local`. For example:
-
-    #!/bin/sh -e
-
-    # Run Newrelic Indicator Applet
-    /home/zizaco/.newrelic-indicator/newrelic-indicator.sh
-
-    exit 0
-    
 ## Troubleshooting
 
 You may need to install **Appindicator** in order to run the Indicator properly:
-    
+
     sudo apt-get install python-appindicator
 
 ## License
