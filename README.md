@@ -23,7 +23,7 @@ _A indicator applet to monitor metrics from newrelic for [Ubuntu's Unity Desktop
 **4.** Add the indicator to run at startup.
 
     $ ./register-startup.sh
-    Do you wish to add Newrelic Indicator to startup? [yn] y
+    Do you wish to run Newrelic Indicator at startup? [yn] y
     ...
     Added Newrelic Indicator to system startup
 
