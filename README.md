@@ -2,6 +2,9 @@
 
 _A indicator applet to monitor metrics from newrelic for [Ubuntu's Unity Desktop](https://unity.ubuntu.com/)_
 
+[![Build Status](https://travis-ci.org/Zizaco/newrelic-indicator.svg?branch=master)](https://travis-ci.org/Zizaco/newrelic-indicator)
+[![License MIT](http://img.shields.io/badge/license-MIT-blue.svg)](http://opensource.org/licenses/MIT)
+
 ![NewRelic Indicator Screenshot](https://dl.dropboxusercontent.com/u/12506137/libs_bundles/newrelic_indicator.png)
 
 ## Quick start
