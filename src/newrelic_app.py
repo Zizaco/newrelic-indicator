@@ -14,14 +14,19 @@ class NewrelicApp:
         url     ='/v2/applications/'+self.api_id+'.json'
         conn    = httplib.HTTPConnection('api.newrelic.com')
 
-        conn.connect()
-        conn.request('GET', url, '', headers)
-        response = conn.getresponse()
-        if response.status == 200:
-            self.raw_app = json.loads(response.read())
-            self.reachable = True
-        else:
-            self.reachable = False
+        try:
+            conn.connect()
+            conn.request('GET', url, '', headers)
+            response = conn.getresponse()
+            if response.status == 200:
+                self.raw_app = json.loads(response.read())
+                self.reachable = True
+                return True
+        except:
+            print "Unable to connect"
+
+        self.reachable = False
+        return False
 
     def is_online(self):
         return self.reachable
