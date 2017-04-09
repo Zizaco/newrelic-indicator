@@ -41,5 +41,5 @@ class NewrelicApp:
         return self.raw_app['application']['application_summary']['error_rate'] if self.is_online() else False
 
     def get_info(self):
-        return ("{0:.0f}".format(self.get_response_time())+"ms | "+str(self.get_rpm())+" rpm | "+"{0:.0f}".format(self.get_errors())+" errors") if self.is_online() else "unavailable info"
+        return ("{0:.0f}".format(self.get_response_time())+"ms | "+str(self.get_rpm())+" rpm | "+"{0:.0f}".format(self.get_errors()*100)+"% errors") if self.is_online() else "info unavailable"
 

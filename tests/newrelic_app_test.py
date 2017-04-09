@@ -119,11 +119,11 @@ class NewrelicAppTest(unittest.TestCase):
         # Mocks
         app.get_rpm           = Mock(return_value=3000)
         app.get_response_time = Mock(return_value=85.9)
-        app.get_errors        = Mock(return_value=3.001)
+        app.get_errors        = Mock(return_value=0.50)
 
         # Asset
         app.reachable = True
-        self.assertEquals('86ms | 3000 rpm | 3 errors', app.get_info())
+        self.assertEquals('86ms | 3000 rpm | 50% errors', app.get_info())
 
         app.reachable = False
-        self.assertEquals('unavailable info', app.get_info())
+        self.assertEquals('info unavailable', app.get_info())
