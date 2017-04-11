@@ -16,13 +16,13 @@ _A indicator applet to monitor metrics from newrelic for [Ubuntu's Unity Desktop
 
 **2.** Add your **API Key** and your **App ID** to `config.json`
 
-**3.** Run the indicator
+**3.** Install the dependencies
 
-    $ ./newrelic-indicator.sh
+    $ sudo make
 
 **4.** Add the indicator to run at startup.
 
-    $ ./register-startup.sh
+    $ make install
     Do you wish to run Newrelic Indicator at startup? [yn] y
     ...
     Added Newrelic Indicator to system startup
@@ -32,6 +32,8 @@ _A indicator applet to monitor metrics from newrelic for [Ubuntu's Unity Desktop
 You may need to install **Appindicator** in order to run the Indicator properly:
 
     sudo apt-get install python-appindicator
+
+Any execution error will be written to `output.log`.
 
 ## License
 
