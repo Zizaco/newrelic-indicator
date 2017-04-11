@@ -79,11 +79,23 @@ class NewrelicAppTest(unittest.TestCase):
     def test_should_get_rpm(self):
         # Set
         app = NewrelicApp('1111','777')
+        app.raw_app = {'application':{'application_summary':{'throughput':300}}}
+
+        # Assert
+        app.reachable = True
+        self.assertEquals(300, app.get_rpm())
+
+        app.reachable = False
+        self.assertFalse(app.get_rpm())
+
+    def test_should_get_rpm_greater_than_1k(self):
+        # Set
+        app = NewrelicApp('1111','777')
         app.raw_app = {'application':{'application_summary':{'throughput':3000}}}
 
         # Assert
         app.reachable = True
-        self.assertEquals(3000, app.get_rpm())
+        self.assertEquals('3.0k ', app.get_rpm())
 
         app.reachable = False
         self.assertFalse(app.get_rpm())
@@ -117,13 +129,13 @@ class NewrelicAppTest(unittest.TestCase):
         app = NewrelicApp('1111','777')
 
         # Mocks
-        app.get_rpm           = Mock(return_value=3000)
+        app.get_rpm           = Mock(return_value='300')
         app.get_response_time = Mock(return_value=85.9)
         app.get_errors        = Mock(return_value=0.50)
 
         # Asset
         app.reachable = True
-        self.assertEquals('86ms | 3000 rpm | 50% errors', app.get_info())
+        self.assertEquals('86ms | 300rpm | 50.0% errors', app.get_info())
 
         app.reachable = False
         self.assertEquals('info unavailable', app.get_info())
