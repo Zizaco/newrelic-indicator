@@ -6,7 +6,9 @@ class ConfigWindow:
     current_tr = 0
     current_td = 0
 
-    def __init__(self):
+    def __init__(self, parent, config_parser):
+        self.parent = parent
+        self.config_parser = config_parser
         self.setup()
 
     def setup(self):
@@ -74,6 +76,7 @@ class ConfigWindow:
 
     def registerEvents(self):
         self.btn_close.connect('clicked', self.close, None)
+        self.btn_save.connect('clicked', self.persist_fields, None)
         self.window.connect("delete_event", self.close, None)
 
     def close(self, widget, data=None, foo=None):
@@ -81,8 +84,18 @@ class ConfigWindow:
         return True
 
     def populate_fields(self):
-        config = ConfigParser()
-        config.read('config.json')
-        self.text_api_key.set_text(config.get_value("API Key"))
-        self.text_api_id.set_text(config.get_value("App ID"))
+        self.text_api_key.set_text(self.config_parser.get_value("API Key"))
+        self.text_api_id.set_text(self.config_parser.get_value("App ID"))
+
+    def persist_fields(self, widget, data=None):
+        self.config_parser.set_value("API Key", self.text_api_key.get_text())
+        self.config_parser.set_value("App ID", self.text_api_id.get_text())
+        self.config_parser.persist()
+        self.parent.refresh()
+
+        md = gtk.MessageDialog(self.window,
+            gtk.DIALOG_DESTROY_WITH_PARENT, gtk.MESSAGE_INFO,
+            gtk.BUTTONS_CLOSE, "Settings have been updated.")
+        md.run()
+        md.destroy()
 

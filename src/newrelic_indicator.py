@@ -2,12 +2,14 @@ import sys
 import os
 import gtk
 import appindicator
+from src.config_window import *
 
 class NewrelicIndicator:
 
     ping_frequency = 60 # seconds
 
-    def __init__(self):
+    def __init__(self, config_parser):
+        self.config_parser = config_parser
         self.setup()
         self.build_menu()
 
@@ -18,6 +20,7 @@ class NewrelicIndicator:
         self.indicator.set_label("New Relic")
 
     def build_menu(self):
+        self.__add_menu_iten('Configuration', self.show_configs)
         self.__add_menu_iten('Quit', self.quit)
 
     def __add_menu_iten(self, name, method):
@@ -47,3 +50,9 @@ class NewrelicIndicator:
 
     def quit(self, widget):
         sys.exit(0)
+
+    def show_configs(self, widget):
+        if not hasattr(self, 'config_window'):
+            self.config_window = ConfigWindow(self, self.config_parser)
+
+        self.config_window.open()

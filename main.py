@@ -8,8 +8,8 @@ if __name__ == "__main__":
     config = ConfigParser()
     config.read('config.json')
 
-    app = NewrelicApp(config.get_value("API Key"), config.get_value("App ID"))
+    app = NewrelicApp(config)
 
-    indicator = NewrelicIndicator()
+    indicator = NewrelicIndicator(config)
     indicator.set_app(app)
     indicator.run()

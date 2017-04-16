@@ -3,15 +3,14 @@ import httplib
 
 class NewrelicApp:
 
-    def __init__(self, api_key, api_id):
-        self.api_key = api_key
-        self.api_id  = api_id
+    def __init__(self, config_parser):
+        self.config_parser = config_parser
         self.raw_app = {}
         self.reachable = False
 
     def update_state(self):
-        headers = {"X-Api-Key":self.api_key}
-        url     ='/v2/applications/'+self.api_id+'.json'
+        headers = {"X-Api-Key":self.config_parser.get_value("API Key")}
+        url     ='/v2/applications/'+self.config_parser.get_value("App ID")+'.json'
         conn    = httplib.HTTPConnection('api.newrelic.com')
 
         try:
