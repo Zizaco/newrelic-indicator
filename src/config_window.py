@@ -78,4 +78,11 @@ class ConfigWindow:
 
     def close(self, widget, data=None, foo=None):
         self.window.hide()
+        return True
+
+    def populate_fields(self):
+        config = ConfigParser()
+        config.read('config.json')
+        self.text_api_key.set_text(config.get_value("API Key"))
+        self.text_api_id.set_text(config.get_value("App ID"))
 
