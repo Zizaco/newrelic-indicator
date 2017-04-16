@@ -1,6 +1,5 @@
-# import pygtk
-# pygtk.require('2.0')
 import gtk
+from src.config_parser import *
 
 class ConfigWindow:
 
@@ -13,8 +12,9 @@ class ConfigWindow:
     def setup(self):
         self.window = gtk.Window()
         self.window.set_title("NewRelic Indicator Configuration")
-        self.box = gtk.Table(4, 3, True)
         self.window.set_border_width(15)
+
+        self.box = gtk.Table(4, 3, True)
         self.window.add(self.box)
 
         self.prepare_window_elements()
@@ -66,8 +66,11 @@ class ConfigWindow:
         element.show()
 
     def open(self):
-        self.window.show()
         self.box.show()
+        self.populate_fields()
+        self.window.set_position(gtk.WIN_POS_CENTER)
+        self.window.show()
+        self.window.set_keep_above(True)
 
     def registerEvents(self):
         self.btn_close.connect('clicked', self.close, None)
