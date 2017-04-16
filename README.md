@@ -14,18 +14,20 @@ _A indicator applet to monitor metrics from newrelic for [Ubuntu's Unity Desktop
     $ git clone git@github.com:Zizaco/newrelic-indicator.git .newrelic-indicator
     $ cd .newrelic-indicator
 
-**2.** Add your **API Key** and your **App ID** to `config.json`
-
-**3.** Install the dependencies
+**2.** Install the dependencies
 
     $ sudo make
 
-**4.** Add the indicator to run at startup.
+**3.** Add the indicator to run at startup.
 
     $ make install
     Do you wish to run Newrelic Indicator at startup? [yn] y
     ...
     Added Newrelic Indicator to system startup
+    
+**4.** Set your **API Key** and your **App ID**
+
+![newrelicindicatorconfig](https://cloud.githubusercontent.com/assets/777635/25074459/7a181918-22d1-11e7-8fdb-4dfbb8265930.png)
 
 ## Troubleshooting
 
